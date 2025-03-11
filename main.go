@@ -43,6 +43,7 @@ func main() {
 	fmt.Println("Doing", amount, "requests per second.")
 
 	totalFailed := 0
+	totalDone := 0
 
 	ticker2 := time.NewTicker(time.Second)
 	for {
@@ -51,9 +52,10 @@ func main() {
 		count := atomic.LoadInt64(&counter)
 		atomic.StoreInt64(&counter, 0)
 
+		totalDone += amount
 		failed := amount - int(count)
 		totalFailed += failed
 
-		fmt.Print("\rTotal failed: ", totalFailed, " | Errors/s:", failed)
+		fmt.Print("\rTotal failed: ", totalFailed, " | Errors/s:", failed, " | Total:", totalDone)
 	}
 }
