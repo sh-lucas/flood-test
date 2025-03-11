@@ -7,5 +7,5 @@ Also, with golang, your CLI should not get overloaded doing way too many request
 
 ## Installing
 bash```
-go install github.com/sh-lucas/flood-test
+  go install github.com/sh-lucas/flood-test
 ```
